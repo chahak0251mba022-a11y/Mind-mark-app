@@ -1,0 +1,348 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "Authenticated café or restaurant founder profile.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "displayName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "minLength": 3,
+          "maxLength": 200
+        },
+        "roleLabel": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 60
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["uid", "displayName", "email", "roleLabel", "createdAt", "updatedAt"]
+    },
+    "Venture": {
+      "title": "Venture Entity",
+      "description": "Independent café or casual restaurant profile and business decision variables.",
+      "type": "object",
+      "properties": {
+        "ownerId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 120
+        },
+        "city": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 80
+        },
+        "cityTier": {
+          "type": "string",
+          "enum": ["Tier-1 Metro", "Urban Hub", "Emerging City"],
+          "maxLength": 30
+        },
+        "format": {
+          "type": "string",
+          "enum": ["Independent Café", "Casual Restaurant", "Bakery & Roastery", "QSR / Dessert Bar"],
+          "maxLength": 40
+        },
+        "seatingCapacity": {
+          "type": "number"
+        },
+        "avgTicketInr": {
+          "type": "number"
+        },
+        "monthlyFootfall": {
+          "type": "number"
+        },
+        "repeatRatePct": {
+          "type": "number"
+        },
+        "decisionGoal": {
+          "type": "string",
+          "enum": ["New Menu Launch", "Price Optimization", "Fix Declining Engagement", "Dine-in vs Takeaway Mix"],
+          "maxLength": 50
+        },
+        "decisionQuestion": {
+          "type": "string",
+          "minLength": 5,
+          "maxLength": 300
+        },
+        "status": {
+          "type": "string",
+          "enum": ["onboarding", "collecting", "analyzed", "completed"],
+          "maxLength": 20
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "ownerId",
+        "name",
+        "city",
+        "cityTier",
+        "format",
+        "seatingCapacity",
+        "avgTicketInr",
+        "monthlyFootfall",
+        "repeatRatePct",
+        "decisionGoal",
+        "decisionQuestion",
+        "status",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "CustomerResponse": {
+      "title": "Customer Survey Response",
+      "description": "Structured customer preference, friction, price tolerance, and switching trigger record.",
+      "type": "object",
+      "properties": {
+        "ownerId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "ventureId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "respondentSegment": {
+          "type": "string",
+          "enum": ["Daily Regular", "Weekend Social", "Remote Worker", "First-Time Visitor", "Delivery / Takeaway"],
+          "maxLength": 40
+        },
+        "visitFrequency": {
+          "type": "string",
+          "enum": ["3+ times/week", "Weekly", "Bi-weekly", "Monthly", "First visit"],
+          "maxLength": 30
+        },
+        "discoveryChannel": {
+          "type": "string",
+          "enum": ["Instagram / Reels", "Google Maps", "Word of Mouth", "Walk-by Foot Traffic", "Aggregator App"],
+          "maxLength": 40
+        },
+        "choiceDriver": {
+          "type": "string",
+          "enum": ["Taste & Craft", "Value for Money", "Ambience & Seating", "Speed & Convenience", "Menu Variety"],
+          "maxLength": 40
+        },
+        "frictionPoint": {
+          "type": "string",
+          "enum": ["Slow Service / Wait Time", "Portion-to-Price Ratio", "Inconsistent Quality", "Limited Seating / Noise", "Unclear Menu Options", "None Reported"],
+          "maxLength": 50
+        },
+        "switchTrigger": {
+          "type": "string",
+          "enum": ["Price Hike > 15%", "Wait > 20 mins", "Better Competitor Offer", "Quality Drop", "Would Not Switch"],
+          "maxLength": 50
+        },
+        "maxWillingTicketInr": {
+          "type": "number"
+        },
+        "newLaunchInterest": {
+          "type": "string",
+          "enum": ["High", "Moderate", "Low"],
+          "maxLength": 20
+        },
+        "verbatimNote": {
+          "type": "string",
+          "maxLength": 400
+        },
+        "status": {
+          "type": "string",
+          "enum": ["verified", "flagged"],
+          "maxLength": 20
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "ownerId",
+        "ventureId",
+        "respondentSegment",
+        "visitFrequency",
+        "discoveryChannel",
+        "choiceDriver",
+        "frictionPoint",
+        "switchTrigger",
+        "maxWillingTicketInr",
+        "newLaunchInterest",
+        "verbatimNote",
+        "status",
+        "createdAt"
+      ]
+    },
+    "InsightReport": {
+      "title": "Customer Insight Research Report",
+      "description": "Actionable marketing and customer experience report generated from structured customer responses.",
+      "type": "object",
+      "properties": {
+        "ownerId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "ventureId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 140
+        },
+        "decisionGoal": {
+          "type": "string",
+          "maxLength": 50
+        },
+        "sampleCount": {
+          "type": "number"
+        },
+        "executiveSummary": {
+          "type": "string",
+          "maxLength": 1200
+        },
+        "metrics": {
+          "type": "object"
+        },
+        "recommendations": {
+          "type": "array"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["generated", "exported", "archived"],
+          "maxLength": 20
+        },
+        "wtpValidated": {
+          "type": "boolean"
+        },
+        "wtpFeedbackNote": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "ownerId",
+        "ventureId",
+        "title",
+        "decisionGoal",
+        "sampleCount",
+        "executiveSummary",
+        "metrics",
+        "recommendations",
+        "status",
+        "wtpValidated",
+        "wtpFeedbackNote",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "ActivityLog": {
+      "title": "Research Activity Log",
+      "description": "Timestamped workflow audit log with status flags.",
+      "type": "object",
+      "properties": {
+        "ownerId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "ventureId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "actionType": {
+          "type": "string",
+          "enum": ["venture_created", "venture_updated", "responses_logged", "report_generated", "report_exported", "wtp_validated"],
+          "maxLength": 40
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 240
+        },
+        "statusFlag": {
+          "type": "string",
+          "enum": ["completed", "active", "exported", "validated"],
+          "maxLength": 20
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["ownerId", "ventureId", "actionType", "summary", "statusFlag", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "Private user profile document isolated by UID."
+    },
+    "/ventures/{ventureId}": {
+      "schema": { "$ref": "#/entities/Venture" },
+      "description": "Outlet/venture profile and business variables owned by a founder."
+    },
+    "/ventures/{ventureId}/responses/{responseId}": {
+      "schema": { "$ref": "#/entities/CustomerResponse" },
+      "description": "Structured customer survey inputs belonging to a venture."
+    },
+    "/ventures/{ventureId}/reports/{reportId}": {
+      "schema": { "$ref": "#/entities/InsightReport" },
+      "description": "Generated Customer Insight Research Reports belonging to a venture."
+    },
+    "/ventures/{ventureId}/activityLogs/{logId}": {
+      "schema": { "$ref": "#/entities/ActivityLog" },
+      "description": "Timestamped research activity logs belonging to a venture."
+    }
+  }
+}

@@ -1,0 +1,287 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Global Safety Net (Default Deny)
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // --- Primitive Helpers ---
+    function isValidId(id) {
+      return id is string && id.size() >= 1 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isSignedIn() {
+      return request.auth != null && request.auth.token.email_verified == true;
+    }
+
+    function isOwner(uid) {
+      return isSignedIn() && request.auth.uid == uid;
+    }
+
+    function isVentureOwner(ventureId) {
+      return isSignedIn() &&
+        exists(/databases/$(database)/documents/ventures/$(ventureId)) &&
+        get(/databases/$(database)/documents/ventures/$(ventureId)).data.ownerId == request.auth.uid;
+    }
+
+    // --- Entity Validation Blueprints ---
+    function isValidUserProfile(data, userId) {
+      return data.keys().hasAll(['uid', 'displayName', 'email', 'roleLabel', 'createdAt', 'updatedAt']) &&
+        data.keys().hasOnly(['uid', 'displayName', 'email', 'roleLabel', 'createdAt', 'updatedAt']) &&
+        data.uid is string && data.uid == userId && data.uid == request.auth.uid && isValidId(data.uid) &&
+        data.displayName is string && data.displayName.size() >= 1 && data.displayName.size() <= 120 &&
+        data.email is string && data.email.size() >= 3 && data.email.size() <= 200 &&
+        data.roleLabel is string && data.roleLabel.size() >= 1 && data.roleLabel.size() <= 60 &&
+        data.createdAt is timestamp &&
+        data.updatedAt is timestamp;
+    }
+
+    function isValidVenture(data) {
+      return data.keys().hasAll([
+          'ownerId', 'name', 'city', 'cityTier', 'format',
+          'seatingCapacity', 'avgTicketInr', 'monthlyFootfall', 'repeatRatePct',
+          'decisionGoal', 'decisionQuestion', 'status', 'createdAt', 'updatedAt'
+        ]) &&
+        data.keys().hasOnly([
+          'ownerId', 'name', 'city', 'cityTier', 'format',
+          'seatingCapacity', 'avgTicketInr', 'monthlyFootfall', 'repeatRatePct',
+          'decisionGoal', 'decisionQuestion', 'status', 'createdAt', 'updatedAt'
+        ]) &&
+        data.ownerId is string && data.ownerId == request.auth.uid && isValidId(data.ownerId) &&
+        data.name is string && data.name.size() >= 2 && data.name.size() <= 120 &&
+        data.city is string && data.city.size() >= 2 && data.city.size() <= 80 &&
+        data.cityTier is string && data.cityTier.size() <= 30 &&
+        data.cityTier in ['Tier-1 Metro', 'Urban Hub', 'Emerging City'] &&
+        data.format is string && data.format.size() <= 40 &&
+        data.format in ['Independent Café', 'Casual Restaurant', 'Bakery & Roastery', 'QSR / Dessert Bar'] &&
+        data.seatingCapacity is number && data.seatingCapacity >= 0 && data.seatingCapacity <= 2000 &&
+        data.avgTicketInr is number && data.avgTicketInr >= 50 && data.avgTicketInr <= 50000 &&
+        data.monthlyFootfall is number && data.monthlyFootfall >= 10 && data.monthlyFootfall <= 500000 &&
+        data.repeatRatePct is number && data.repeatRatePct >= 0 && data.repeatRatePct <= 100 &&
+        data.decisionGoal is string && data.decisionGoal.size() <= 50 &&
+        data.decisionGoal in ['New Menu Launch', 'Price Optimization', 'Fix Declining Engagement', 'Dine-in vs Takeaway Mix'] &&
+        data.decisionQuestion is string && data.decisionQuestion.size() >= 5 && data.decisionQuestion.size() <= 300 &&
+        data.status is string && data.status.size() <= 20 &&
+        data.status in ['onboarding', 'collecting', 'analyzed', 'completed'] &&
+        data.createdAt is timestamp &&
+        data.updatedAt is timestamp;
+    }
+
+    function isValidCustomerResponse(data, ventureId) {
+      return data.keys().hasAll([
+          'ownerId', 'ventureId', 'respondentSegment', 'visitFrequency',
+          'discoveryChannel', 'choiceDriver', 'frictionPoint', 'switchTrigger',
+          'maxWillingTicketInr', 'newLaunchInterest', 'verbatimNote', 'status', 'createdAt'
+        ]) &&
+        data.keys().hasOnly([
+          'ownerId', 'ventureId', 'respondentSegment', 'visitFrequency',
+          'discoveryChannel', 'choiceDriver', 'frictionPoint', 'switchTrigger',
+          'maxWillingTicketInr', 'newLaunchInterest', 'verbatimNote', 'status', 'createdAt'
+        ]) &&
+        data.ownerId is string && data.ownerId == request.auth.uid && isValidId(data.ownerId) &&
+        data.ventureId is string && data.ventureId == ventureId && isValidId(data.ventureId) &&
+        data.respondentSegment is string && data.respondentSegment.size() <= 40 &&
+        data.respondentSegment in ['Daily Regular', 'Weekend Social', 'Remote Worker', 'First-Time Visitor', 'Delivery / Takeaway'] &&
+        data.visitFrequency is string && data.visitFrequency.size() <= 30 &&
+        data.visitFrequency in ['3+ times/week', 'Weekly', 'Bi-weekly', 'Monthly', 'First visit'] &&
+        data.discoveryChannel is string && data.discoveryChannel.size() <= 40 &&
+        data.discoveryChannel in ['Instagram / Reels', 'Google Maps', 'Word of Mouth', 'Walk-by Foot Traffic', 'Aggregator App'] &&
+        data.choiceDriver is string && data.choiceDriver.size() <= 40 &&
+        data.choiceDriver in ['Taste & Craft', 'Value for Money', 'Ambience & Seating', 'Speed & Convenience', 'Menu Variety'] &&
+        data.frictionPoint is string && data.frictionPoint.size() <= 50 &&
+        data.frictionPoint in ['Slow Service / Wait Time', 'Portion-to-Price Ratio', 'Inconsistent Quality', 'Limited Seating / Noise', 'Unclear Menu Options', 'None Reported'] &&
+        data.switchTrigger is string && data.switchTrigger.size() <= 50 &&
+        data.switchTrigger in ['Price Hike > 15%', 'Wait > 20 mins', 'Better Competitor Offer', 'Quality Drop', 'Would Not Switch'] &&
+        data.maxWillingTicketInr is number && data.maxWillingTicketInr >= 50 && data.maxWillingTicketInr <= 50000 &&
+        data.newLaunchInterest is string && data.newLaunchInterest.size() <= 20 &&
+        data.newLaunchInterest in ['High', 'Moderate', 'Low'] &&
+        data.verbatimNote is string && data.verbatimNote.size() <= 400 &&
+        data.status is string && data.status.size() <= 20 &&
+        data.status in ['verified', 'flagged'] &&
+        data.createdAt is timestamp;
+    }
+
+    function isValidRecommendationItem(item) {
+      return item is map &&
+        item.keys().hasAll(['category', 'title', 'evidence', 'impact', 'action']) &&
+        item.keys().hasOnly(['category', 'title', 'evidence', 'impact', 'action']) &&
+        item.category is string && item.category.size() >= 2 && item.category.size() <= 40 &&
+        item.title is string && item.title.size() >= 3 && item.title.size() <= 140 &&
+        item.evidence is string && item.evidence.size() >= 3 && item.evidence.size() <= 260 &&
+        item.impact is string && item.impact.size() >= 3 && item.impact.size() <= 160 &&
+        item.action is string && item.action.size() >= 3 && item.action.size() <= 360;
+    }
+
+    function isValidInsightReport(data, ventureId) {
+      return data.keys().hasAll([
+          'ownerId', 'ventureId', 'title', 'decisionGoal', 'sampleCount',
+          'executiveSummary', 'metrics', 'recommendations', 'status',
+          'wtpValidated', 'wtpFeedbackNote', 'createdAt', 'updatedAt'
+        ]) &&
+        data.keys().hasOnly([
+          'ownerId', 'ventureId', 'title', 'decisionGoal', 'sampleCount',
+          'executiveSummary', 'metrics', 'recommendations', 'status',
+          'wtpValidated', 'wtpFeedbackNote', 'createdAt', 'updatedAt'
+        ]) &&
+        data.ownerId is string && data.ownerId == request.auth.uid && isValidId(data.ownerId) &&
+        data.ventureId is string && data.ventureId == ventureId && isValidId(data.ventureId) &&
+        data.title is string && data.title.size() >= 3 && data.title.size() <= 140 &&
+        data.decisionGoal is string && data.decisionGoal.size() >= 2 && data.decisionGoal.size() <= 50 &&
+        data.sampleCount is number && data.sampleCount >= 1 && data.sampleCount <= 10000 &&
+        data.executiveSummary is string && data.executiveSummary.size() >= 10 && data.executiveSummary.size() <= 1200 &&
+        data.metrics is map &&
+        data.metrics.keys().hasAll([
+          'topChoiceDriver', 'topChoicePct', 'topFrictionPoint', 'topFrictionPct',
+          'topSwitchTrigger', 'switchRiskPct', 'medianWillingTicketInr',
+          'sweetSpotMinInr', 'sweetSpotMaxInr', 'projectedMonthlyLiftInr', 'highLaunchInterestPct'
+        ]) &&
+        data.metrics.keys().hasOnly([
+          'topChoiceDriver', 'topChoicePct', 'topFrictionPoint', 'topFrictionPct',
+          'topSwitchTrigger', 'switchRiskPct', 'medianWillingTicketInr',
+          'sweetSpotMinInr', 'sweetSpotMaxInr', 'projectedMonthlyLiftInr', 'highLaunchInterestPct'
+        ]) &&
+        data.metrics.topChoiceDriver is string && data.metrics.topChoiceDriver.size() <= 60 &&
+        data.metrics.topChoicePct is number &&
+        data.metrics.topFrictionPoint is string && data.metrics.topFrictionPoint.size() <= 60 &&
+        data.metrics.topFrictionPct is number &&
+        data.metrics.topSwitchTrigger is string && data.metrics.topSwitchTrigger.size() <= 60 &&
+        data.metrics.switchRiskPct is number &&
+        data.metrics.medianWillingTicketInr is number &&
+        data.metrics.sweetSpotMinInr is number &&
+        data.metrics.sweetSpotMaxInr is number &&
+        data.metrics.projectedMonthlyLiftInr is number &&
+        data.metrics.highLaunchInterestPct is number &&
+        data.recommendations is list && data.recommendations.size() >= 1 && data.recommendations.size() <= 6 &&
+        isValidRecommendationItem(data.recommendations[0]) &&
+        data.status is string && data.status.size() <= 20 &&
+        data.status in ['generated', 'exported', 'archived'] &&
+        data.wtpValidated is bool &&
+        data.wtpFeedbackNote is string && data.wtpFeedbackNote.size() <= 300 &&
+        data.createdAt is timestamp &&
+        data.updatedAt is timestamp;
+    }
+
+    function isValidActivityLog(data, ventureId) {
+      return data.keys().hasAll(['ownerId', 'ventureId', 'actionType', 'summary', 'statusFlag', 'createdAt']) &&
+        data.keys().hasOnly(['ownerId', 'ventureId', 'actionType', 'summary', 'statusFlag', 'createdAt']) &&
+        data.ownerId is string && data.ownerId == request.auth.uid && isValidId(data.ownerId) &&
+        data.ventureId is string && data.ventureId == ventureId && isValidId(data.ventureId) &&
+        data.actionType is string && data.actionType.size() <= 40 &&
+        data.actionType in ['venture_created', 'venture_updated', 'responses_logged', 'report_generated', 'report_exported', 'wtp_validated'] &&
+        data.summary is string && data.summary.size() >= 2 && data.summary.size() <= 240 &&
+        data.statusFlag is string && data.statusFlag.size() <= 20 &&
+        data.statusFlag in ['completed', 'active', 'exported', 'validated'] &&
+        data.createdAt is timestamp;
+    }
+
+    // --- Collection Rules ---
+    match /users/{userId} {
+      allow get: if isValidId(userId) && isOwner(userId);
+      allow list: if false;
+      allow create: if isValidId(userId) && isOwner(userId) &&
+        isValidUserProfile(incoming(), userId) &&
+        incoming().createdAt == request.time &&
+        incoming().updatedAt == request.time;
+      allow update: if isValidId(userId) && isOwner(userId) &&
+        isValidUserProfile(incoming(), userId) &&
+        incoming().uid == existing().uid &&
+        incoming().createdAt == existing().createdAt &&
+        incoming().updatedAt == request.time &&
+        incoming().diff(existing()).affectedKeys().hasOnly(['displayName', 'roleLabel', 'updatedAt']);
+      allow delete: if false;
+    }
+
+    match /ventures/{ventureId} {
+      allow get: if isValidId(ventureId) && isSignedIn() && existing().ownerId == request.auth.uid;
+      allow list: if isSignedIn() && existing().ownerId == request.auth.uid;
+      allow create: if isValidId(ventureId) && isSignedIn() &&
+        isValidVenture(incoming()) &&
+        incoming().createdAt == request.time &&
+        incoming().updatedAt == request.time;
+      allow update: if isValidId(ventureId) && isSignedIn() &&
+        isValidVenture(incoming()) &&
+        existing().ownerId == request.auth.uid &&
+        incoming().ownerId == existing().ownerId &&
+        incoming().createdAt == existing().createdAt &&
+        incoming().updatedAt == request.time &&
+        (
+          incoming().diff(existing()).affectedKeys().hasOnly([
+            'name', 'city', 'cityTier', 'format', 'seatingCapacity',
+            'avgTicketInr', 'monthlyFootfall', 'repeatRatePct',
+            'decisionGoal', 'decisionQuestion', 'status', 'updatedAt'
+          ]) ||
+          incoming().diff(existing()).affectedKeys().hasOnly(['status', 'updatedAt'])
+        );
+      allow delete: if isValidId(ventureId) && isSignedIn() && existing().ownerId == request.auth.uid;
+
+      match /responses/{responseId} {
+        allow get: if isValidId(ventureId) && isValidId(responseId) && isVentureOwner(ventureId) && existing().ownerId == request.auth.uid;
+        allow list: if isSignedIn() && existing().ownerId == request.auth.uid;
+        allow create: if isValidId(ventureId) && isValidId(responseId) &&
+          isSignedIn() &&
+          isValidCustomerResponse(incoming(), ventureId) &&
+          incoming().createdAt == request.time &&
+          isVentureOwner(ventureId);
+        allow update: if isValidId(ventureId) && isValidId(responseId) &&
+          isSignedIn() &&
+          isValidCustomerResponse(incoming(), ventureId) &&
+          existing().ownerId == request.auth.uid &&
+          incoming().ownerId == existing().ownerId &&
+          incoming().ventureId == existing().ventureId &&
+          incoming().createdAt == existing().createdAt &&
+          incoming().diff(existing()).affectedKeys().hasOnly(['status', 'verbatimNote']) &&
+          isVentureOwner(ventureId);
+        allow delete: if isValidId(ventureId) && isValidId(responseId) && isVentureOwner(ventureId) && existing().ownerId == request.auth.uid;
+      }
+
+      match /reports/{reportId} {
+        allow get: if isValidId(ventureId) && isValidId(reportId) && isVentureOwner(ventureId) && existing().ownerId == request.auth.uid;
+        allow list: if isSignedIn() && existing().ownerId == request.auth.uid;
+        allow create: if isValidId(ventureId) && isValidId(reportId) &&
+          isSignedIn() &&
+          isValidInsightReport(incoming(), ventureId) &&
+          incoming().status == 'generated' &&
+          incoming().createdAt == request.time &&
+          incoming().updatedAt == request.time &&
+          isVentureOwner(ventureId);
+        allow update: if isValidId(ventureId) && isValidId(reportId) &&
+          isSignedIn() &&
+          isValidInsightReport(incoming(), ventureId) &&
+          existing().ownerId == request.auth.uid &&
+          existing().status != 'archived' &&
+          incoming().ownerId == existing().ownerId &&
+          incoming().ventureId == existing().ventureId &&
+          incoming().createdAt == existing().createdAt &&
+          incoming().updatedAt == request.time &&
+          (
+            incoming().diff(existing()).affectedKeys().hasOnly(['status', 'updatedAt']) ||
+            incoming().diff(existing()).affectedKeys().hasOnly(['wtpValidated', 'wtpFeedbackNote', 'updatedAt']) ||
+            incoming().diff(existing()).affectedKeys().hasOnly(['status', 'wtpValidated', 'wtpFeedbackNote', 'updatedAt'])
+          ) &&
+          isVentureOwner(ventureId);
+        allow delete: if isValidId(ventureId) && isValidId(reportId) && isVentureOwner(ventureId) && existing().ownerId == request.auth.uid;
+      }
+
+      match /activityLogs/{logId} {
+        allow get: if isValidId(ventureId) && isValidId(logId) && isVentureOwner(ventureId) && existing().ownerId == request.auth.uid;
+        allow list: if isSignedIn() && existing().ownerId == request.auth.uid;
+        allow create: if isValidId(ventureId) && isValidId(logId) &&
+          isSignedIn() &&
+          isValidActivityLog(incoming(), ventureId) &&
+          incoming().createdAt == request.time &&
+          isVentureOwner(ventureId);
+        allow update: if false;
+        allow delete: if isValidId(ventureId) && isValidId(logId) && isVentureOwner(ventureId) && existing().ownerId == request.auth.uid;
+      }
+    }
+  }
+}

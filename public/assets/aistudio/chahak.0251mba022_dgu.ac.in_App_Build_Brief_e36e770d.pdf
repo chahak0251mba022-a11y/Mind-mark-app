@@ -1,0 +1,642 @@
+%PDF-1.3
+%ºß¬à
+3 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 4 0 R
+>>
+endobj
+4 0 obj
+<<
+/Length 9818
+>>
+stream
+0.5670000000000001 w
+0 G
+BT
+/F2 12 Tf
+13.7999999999999989 TL
+0.357 0.173 0.514 rg
+51.0236220472441033 790.8663779527558972 Td
+(DGU VENTURE QUEST) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0.478 0.247 0.627 rg
+204.0944881889764133 790.8663779527558972 Td
+(Entrepreneurship & Innovation — DBS Global University) Tj
+ET
+0.36 0.17 0.51 RG
+1.7007874015748032 w
+51.0236220472441033 778.1104724409448181 m
+544.2563779527558836 778.1104724409448181 l
+S
+BT
+/F2 8.5 Tf
+9.7749999999999986 TL
+0.09 g
+51.0236220472441033 761.1025984251967884 Td
+(Student:) Tj
+ET
+BT
+/F1 8.5 Tf
+9.7749999999999986 TL
+0.09 g
+102.0472440944882067 761.1025984251967884 Td
+(Chahak Joshi 0251MBA022) Tj
+ET
+BT
+/F2 8.5 Tf
+9.7749999999999986 TL
+0.09 g
+300.472440944881896 761.1025984251967884 Td
+(DGU Email:) Tj
+ET
+BT
+/F1 8.5 Tf
+9.7749999999999986 TL
+0.09 g
+354.3307086614173613 761.1025984251967884 Td
+(chahak.0251mba022@dgu.ac.in) Tj
+ET
+BT
+/F2 8.5 Tf
+9.7749999999999986 TL
+0.09 g
+51.0236220472441033 748.346692913385823 Td
+(Venture:) Tj
+ET
+BT
+/F1 8.5 Tf
+9.7749999999999986 TL
+0.09 g
+102.0472440944882067 748.346692913385823 Td
+(MindMark) Tj
+ET
+BT
+/F2 8.5 Tf
+9.7749999999999986 TL
+0.09 g
+300.472440944881896 748.346692913385823 Td
+(Generated:) Tj
+ET
+BT
+/F1 8.5 Tf
+9.7749999999999986 TL
+0.09 g
+354.3307086614173613 748.346692913385823 Td
+(13 Oct 2026) Tj
+ET
+0.89 0.91 0.94 RG
+0.8503937007874016 w
+51.0236220472441033 734.1734645669290558 m
+544.2563779527558836 734.1734645669290558 l
+S
+BT
+/F2 15 Tf
+17.25 TL
+0.357 0.173 0.514 rg
+51.0236220472441033 717.1655905511811397 Td
+(ASSIGNMENT 2 — VENTURE APP BUILD BRIEF) Tj
+ET
+0.36 0.17 0.51 RG
+0.97 0.96 0.98 rg
+1.1338582677165356 w
+56.6929133858267775 697.3230708661417339 m
+538.5870866141731312 697.3230708661417339 l
+541.7181497628201896 697.3230708661417339 544.2563779527558836 694.7848426762060399 544.2563779527558836 691.6537795275589815 c
+544.2563779527558836 646.2994488188976447 l
+544.2563779527558836 643.1683856702505864 541.1253148041088252 640.6301574803148924 538.5870866141731312 640.6301574803148924 c
+56.6929133858267775 640.6301574803148924 l
+53.5618502371797618 640.6301574803148924 51.0236220472441033 643.7612206289619508 51.0236220472441033 646.2994488188976447 c
+51.0236220472441033 691.6537795275589815 l
+51.0236220472441033 694.7848426762060399 54.1546851958911191 697.3230708661417339 56.6929133858267775 697.3230708661417339 c
+h
+B
+BT
+/F2 8.5 Tf
+9.7749999999999986 TL
+0.357 0.173 0.514 rg
+62.3622047244094517 683.1498425196850803 Td
+(VENTURE APPLICATION OBJECTIVE) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0.09 g
+62.3622047244094517 670.3939370078740012 Td
+(Build an individual working application prototype based on your) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0.09 g
+62.3622047244094517 659.0553543307086102 Td
+(validated venture logic. This document defines the exact software) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0.09 g
+62.3622047244094517 647.7167716535432191 Td
+(specifications derived from your Venture Quest journey.) Tj
+ET
+BT
+/F2 9 Tf
+10.3499999999999996 TL
+0.357 0.173 0.514 rg
+51.0236220472441033 630.7088976377951894 Td
+(Venture Name) Tj
+ET
+BT
+/F1 8.5 Tf
+9.7749999999999986 TL
+0.09 g
+51.0236220472441033 619.3703149606299121 Td
+(MindMark) Tj
+ET
+BT
+/F2 9 Tf
+10.3499999999999996 TL
+0.357 0.173 0.514 rg
+51.0236220472441033 602.3624409448818824 Td
+(Target User) Tj
+ET
+BT
+/F1 8.5 Tf
+9.7749999999999986 TL
+0.09 g
+51.0236220472441033 591.0238582677164914 Td
+(Independent cafés and casual restaurants in urban and Tier-1 Indian cities that want affordable customer insights to improve menu,) Tj
+ET
+BT
+/F1 8.5 Tf
+9.7749999999999986 TL
+0.09 g
+51.0236220472441033 579.6852755905511003 Td
+(pricing, customer experience and marketing decisions.) Tj
+ET
+BT
+/F2 9 Tf
+10.3499999999999996 TL
+0.357 0.173 0.514 rg
+51.0236220472441033 562.6774015748030706 Td
+(Core Problem) Tj
+ET
+BT
+/F1 8.5 Tf
+9.7749999999999986 TL
+0.09 g
+51.0236220472441033 551.3388188976377933 Td
+(Small businesses often make marketing and business decisions based on assumptions rather than actual customer insights. They) Tj
+ET
+BT
+/F1 8.5 Tf
+9.7749999999999986 TL
+0.09 g
+51.0236220472441033 540.0002362204724022 Td
+(lack affordable and accessible tools to understand why customers choose, reject or switch between brands.) Tj
+ET
+BT
+/F2 9 Tf
+10.3499999999999996 TL
+0.357 0.173 0.514 rg
+51.0236220472441033 522.9923622047243725 Td
+(Jobs to Be Done \(JTBD\)) Tj
+ET
+BT
+/F1 8.5 Tf
+9.7749999999999986 TL
+0.09 g
+51.0236220472441033 511.6537795275589815 Td
+(When I need to make an important marketing decision, such as launching a product, changing prices or addressing declining) Tj
+ET
+BT
+/F1 8.5 Tf
+9.7749999999999986 TL
+0.09 g
+51.0236220472441033 500.3151968503936473 Td
+(customer engagement -> quickly understand what my customers actually want and why they make particular purchasing decisions) Tj
+ET
+BT
+/F1 8.5 Tf
+9.7749999999999986 TL
+0.09 g
+51.0236220472441033 488.9766141732283131 Td
+(-> make confident, evidence-based marketing decisions that improve customer satisfaction and business performance.) Tj
+ET
+BT
+/F2 9 Tf
+10.3499999999999996 TL
+0.357 0.173 0.514 rg
+51.0236220472441033 471.9687401574802834 Td
+(Value Proposition) Tj
+ET
+BT
+/F1 8.5 Tf
+9.7749999999999986 TL
+0.09 g
+51.0236220472441033 460.6301574803148924 Td
+(For Independent cafés and casual restaurants in urban and Tier-1 Indian cities that want affordable customer insights to improve) Tj
+ET
+BT
+/F1 8.5 Tf
+9.7749999999999986 TL
+0.09 g
+51.0236220472441033 449.2915748031495582 Td
+(menu, pricing, customer experience and marketing decisions., who struggles with Small and emerging cafés and restaurants often) Tj
+ET
+BT
+/F1 8.5 Tf
+9.7749999999999986 TL
+0.09 g
+51.0236220472441033 437.952992125984224 Td
+(lack reliable customer insights and therefore rely on assumptions, informal feedback and basic sales data when making marketing) Tj
+ET
+BT
+/F1 8.5 Tf
+9.7749999999999986 TL
+0.09 g
+51.0236220472441033 426.614409448818833 Td
+(decisions., our venture provides [product/service] that delivers [main benefit], so that [desired outcome].) Tj
+ET
+BT
+/F2 9 Tf
+10.3499999999999996 TL
+0.357 0.173 0.514 rg
+51.0236220472441033 409.6065354330708033 Td
+(Core MVP Features \(Must Have\)) Tj
+ET
+BT
+/F1 8.5 Tf
+9.7749999999999986 TL
+0.09 g
+51.0236220472441033 398.2679527559054691 Td
+(1. Customer Insight Research Report: It converts structured customer feedback and survey responses into clear, actionable insights) Tj
+ET
+BT
+/F1 8.5 Tf
+9.7749999999999986 TL
+0.09 g
+51.0236220472441033 386.929370078740078 Td
+(that the business can use for marketing and customer-experience decisions. \(Solves: Need to understand customer preferences,) Tj
+ET
+BT
+/F1 8.5 Tf
+9.7749999999999986 TL
+0.09 g
+51.0236220472441033 375.5907874015747439 Td
+(motivations and buying behaviour before making marketing decisions.\)) Tj
+ET
+BT
+/F2 9 Tf
+10.3499999999999996 TL
+0.357 0.173 0.514 rg
+51.0236220472441033 358.5829133858267141 Td
+(What Will NOT Be Included in Version 1) Tj
+ET
+BT
+/F1 8.5 Tf
+9.7749999999999986 TL
+0.09 g
+51.0236220472441033 347.24433070866138 Td
+(No mobile app, automated AI dashboard, complex analytics platform, large-scale market database, loyalty programme or long-term) Tj
+ET
+BT
+/F1 8.5 Tf
+9.7749999999999986 TL
+0.09 g
+51.0236220472441033 335.9057480314959889 Td
+(subscription system. Version 1 will focus only on conducting customer research, analysing responses and delivering a concise) Tj
+ET
+BT
+/F1 8.5 Tf
+9.7749999999999986 TL
+0.09 g
+51.0236220472441033 324.5671653543306547 Td
+(actionable insight report.) Tj
+ET
+BT
+/F2 9 Tf
+10.3499999999999996 TL
+0.357 0.173 0.514 rg
+51.0236220472441033 307.559291338582625 Td
+(Required Inputs from User) Tj
+ET
+BT
+/F1 8.5 Tf
+9.7749999999999986 TL
+0.09 g
+51.0236220472441033 296.220708661417234 Td
+(User credentials, business input variables, customer preferences, activity logs) Tj
+ET
+BT
+/F2 9 Tf
+10.3499999999999996 TL
+0.357 0.173 0.514 rg
+51.0236220472441033 279.2128346456692043 Td
+(Required Outputs / Display) Tj
+ET
+BT
+/F1 8.5 Tf
+9.7749999999999986 TL
+0.09 g
+51.0236220472441033 267.8742519685038133 Td
+(Decision recommendations, calculated metrics, visual feedback, downloadable deliverables) Tj
+ET
+BT
+/F2 9 Tf
+10.3499999999999996 TL
+0.357 0.173 0.514 rg
+51.0236220472441033 250.8663779527557836 Td
+(Data That Must Be Stored) Tj
+ET
+BT
+/F1 8.5 Tf
+9.7749999999999986 TL
+0.09 g
+51.0236220472441033 239.5277952755905062 Td
+(User profile, venture entities, session inputs, timestamps, status flags) Tj
+ET
+BT
+/F2 9 Tf
+10.3499999999999996 TL
+0.357 0.173 0.514 rg
+51.0236220472441033 222.5199212598424765 Td
+(Suggested User Flow) Tj
+ET
+BT
+/F1 8.5 Tf
+9.7749999999999986 TL
+0.09 g
+51.0236220472441033 211.1813385826770855 Td
+(1. Onboarding & problem framing) Tj
+ET
+BT
+/F1 8.5 Tf
+9.7749999999999986 TL
+0.09 g
+51.0236220472441033 199.8427559055116944 Td
+(2. User decision / calculation input) Tj
+ET
+BT
+/F1 8.5 Tf
+9.7749999999999986 TL
+0.09 g
+51.0236220472441033 188.5041732283464171 Td
+(3. Value generation / result display) Tj
+ET
+BT
+/F1 8.5 Tf
+9.7749999999999986 TL
+0.09 g
+51.0236220472441033 177.1655905511810261 Td
+(4. Save, export, or action completion) Tj
+ET
+BT
+/F2 9 Tf
+10.3499999999999996 TL
+0.357 0.173 0.514 rg
+51.0236220472441033 160.1577165354329964 Td
+(Validation Objective) Tj
+ET
+BT
+/F1 8.5 Tf
+9.7749999999999986 TL
+0.09 g
+51.0236220472441033 148.8191338582676053 Td
+( I n d e p e n d e n t   c a f é s   a n d   c a s u a l   r e s t a u r a n t s   w i l l   b e   w i l l i n g   t o   p a y   ¹ 5 , 0 0 0   f o r   a   c u s t o m i z e d   c o n s u m e r - i n s i g h t   r e p o r t   t h a t   h e l p s   t h e m) Tj
+ET
+BT
+/F1 8.5 Tf
+9.7749999999999986 TL
+0.09 g
+51.0236220472441033 137.480551181102328 Td
+(make marketing and customer-experience decisions.) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0.392 0.455 0.545 rg
+213.1999999999999318 25.5118110236220446 Td
+(DGU Venture Quest  |  MindMark  |  Page 1 of 1) Tj
+ET
+endstream
+endobj
+1 0 obj
+<</Type /Pages
+/Kids [3 0 R ]
+/Count 1
+>>
+endobj
+5 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+6 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-Bold
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+7 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-Oblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+8 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-BoldOblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+9 0 obj
+<<
+/Type /Font
+/BaseFont /Courier
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+10 0 obj
+<<
+/Type /Font
+/BaseFont /Courier-Bold
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+11 0 obj
+<<
+/Type /Font
+/BaseFont /Courier-Oblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+12 0 obj
+<<
+/Type /Font
+/BaseFont /Courier-BoldOblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+13 0 obj
+<<
+/Type /Font
+/BaseFont /Times-Roman
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+14 0 obj
+<<
+/Type /Font
+/BaseFont /Times-Bold
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+15 0 obj
+<<
+/Type /Font
+/BaseFont /Times-Italic
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+16 0 obj
+<<
+/Type /Font
+/BaseFont /Times-BoldItalic
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+17 0 obj
+<<
+/Type /Font
+/BaseFont /ZapfDingbats
+/Subtype /Type1
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+18 0 obj
+<<
+/Type /Font
+/BaseFont /Symbol
+/Subtype /Type1
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+2 0 obj
+<<
+/ProcSet [/PDF /Text /ImageB /ImageC /ImageI]
+/Font <<
+/F1 5 0 R
+/F2 6 0 R
+/F3 7 0 R
+/F4 8 0 R
+/F5 9 0 R
+/F6 10 0 R
+/F7 11 0 R
+/F8 12 0 R
+/F9 13 0 R
+/F10 14 0 R
+/F11 15 0 R
+/F12 16 0 R
+/F13 17 0 R
+/F14 18 0 R
+>>
+/XObject <<
+>>
+>>
+endobj
+19 0 obj
+<<
+/Producer (jsPDF 4.2.1)
+/CreationDate (D:20261013163057+05'30')
+>>
+endobj
+20 0 obj
+<<
+/Type /Catalog
+/Pages 1 0 R
+/OpenAction [3 0 R /FitH null]
+/PageLayout /OneColumn
+>>
+endobj
+xref
+0 21
+0000000000 65535 f 
+0000010022 00000 n 
+0000011839 00000 n 
+0000000015 00000 n 
+0000000152 00000 n 
+0000010079 00000 n 
+0000010204 00000 n 
+0000010334 00000 n 
+0000010467 00000 n 
+0000010604 00000 n 
+0000010727 00000 n 
+0000010856 00000 n 
+0000010988 00000 n 
+0000011124 00000 n 
+0000011252 00000 n 
+0000011379 00000 n 
+0000011508 00000 n 
+0000011641 00000 n 
+0000011743 00000 n 
+0000012087 00000 n 
+0000012173 00000 n 
+trailer
+<<
+/Size 21
+/Root 20 0 R
+/Info 19 0 R
+/ID [ <D484F71714599FDC4BA7975BA2CFCF8B> <D484F71714599FDC4BA7975BA2CFCF8B> ]
+>>
+startxref
+12277
+%%EOF

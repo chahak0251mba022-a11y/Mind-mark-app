@@ -1,0 +1,6 @@
+{
+  "name": "MindMark",
+  "description": "Customer Insight Research Report workspace for independent cafés and casual restaurants in urban and Tier-1 Indian cities.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
